@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="Cards Cards_refresh" th:fragment="pool(category,search,query)">
+
+    <div class="Card" th:each="book: ${getPagedPopularBooksDataVer3}" th:if="${category == 'popular'}">
+        <div th:replace="~{fragments/book_fragment_other_page :: book_cart(${book})}"></div>
+    </div>
+
+    <div class="Card" th:each="book: ${getPagedRecentBooksDataVer3}" th:if="${category == 'recent'}">
+        <div th:replace="~{fragments/book_fragment_other_page :: book_cart(${book})}"></div>
+    </div>
+
+
+    <div class="Card" th:each="book: ${getPagedSearchedBooksResult}" th:if="${category == 'search'}">
+        <div th:replace="~{fragments/book_fragment_other_page :: book_cart(${book})}"></div>
+    </div>
+
+    <div class="Card" th:each="book: ${pagedBooksByTag}" th:if="${category == 'tag'}">
+        <div th:replace="~{fragments/book_fragment_other_page :: book_cart(${book})}"></div>
+    </div>
+
+
+    <div class="Cards-footer Cards-footer_center"><a class="btn btn_primary" href="#"
+                                                     data-refreshshow="search"
+                                                     data-refreshoffset="0"
+                                                     data-refreshlimit="5"
+                                                     th:attr="data-refreshquery = ${query},data-refreshshow=${search}"
+                                                     data-refreshquery="Техника" th:text="#{body.show_more}">Показать
+        еще</a>
+    </div>
+</div>
+
+</html>

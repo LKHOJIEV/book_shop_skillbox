@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div class="Tags" id="tags" th:fragment="cloud" >
+
+    <div class="Tag Tag_md" th:each="tags: ${getAllTags}">
+        <a th:href="@{'/tags/'+${tags.id}}" th:text="${tags.name}">фэнтези</a>
+    </div>
+
+</div>
+</html>
